@@ -1,10 +1,14 @@
 :root{
   --bg-color: #eee;
-  --text-color: #333
+  --text-color: #333;
+  --button-bg: #555;
+  --button-color: #ddd
 }
 
 body {
   background-color: var(--bg-color);
+  user-select: none;
+  transition: background-color 0.3s;
 }
 
 .checkbox {
@@ -18,13 +22,32 @@ body {
 
 .switch {
   display: block;
-  width: 100px;
-  height: 50px;
+  width: 50px;
+  height: 30px;
   background-color: grey;
   border-radius: 25px;
 }
 
 .switch::before {
   content: '';
-  display: block;
+  display: block;  /*para darle medidas, ya que por defecto los pseudoelementos son elementos inline*/
+  width: 30px;
+  height: 30px;
+  background-color: royalblue;
+  border-radius: 50%;
+  transform: translateX(0);
+  transition: transform 0.3s;
+}
+
+.checkbox:checked + .switch::before{
+  transform: translateX(20px);
+}
+
+.button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  transition: background-color 0.3s, color 0.3s;
 }
